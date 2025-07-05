@@ -1,8 +1,12 @@
 // Sistema para gestion de biblioteca
+// me recomendaron que lo mas que puediera trabajarlo en Ingles asi lo hiciera y lo intente.
+
+// aqui tenemos el prompt , este lo utilizamos por que vamos a interactuar con el usuario.
 
 const prompt=require('prompt-sync')();
 
 // Library Data ( Arrays ) 
+// en esta parte cpoloque los arras que utilice para almacenar usuarios y libros
 // Aqui se muestran los arrays utilizados dentro de nuestro codigo.
 
 let Books = [
@@ -89,33 +93,31 @@ let Users =  [
     lendBooks:[],
     activated: true}  
 ];
-let Lends = [];
-let Reports= [];
+
 
 // special functions block---------------------------------------------------------------------------------
 // aqui estaran los metodos utilizados.
 
-// looking book by id ( va y busca un libro )
+// looking book by id ( esta es la funcion que utilizo para ir a buscar los libros )
 
 function SearchBookById(searchBookId){
   return Books.find((Book)=>{return Book.id===searchBookId});
     }
 
- // looking book by criteria ( este tambien lo utilice para buscar el libro por criterio):
+ // looking book by criteria ( este tambien lo utilice para buscar el libro pero aqui se realiza por criterio):
 
 function SearchBookByCriteria(SearchBookCriteria,criteriaValue){
   switch (SearchBookCriteria){
     case "titulo": 
-      return Books.filter((Book)=>{return Book.title===criteriaValue});
+    return Books.filter((Book)=>{return Book.title===criteriaValue});
     case "autor": 
-      return Books.filter((Book)=>{return Book.author===criteriaValue});
+    return Books.filter((Book)=>{return Book.author===criteriaValue});
     case "genero": 
-      return Books.filter((Book)=>{return Book.genre===criteriaValue});
+    return Books.filter((Book)=>{return Book.genre===criteriaValue});
   }
 }  
 
 // looking User by id :
-
 function SearchUserById(searchUserId){
   return Users.find((user)=>{return user.UserId===searchUserId});
     }
@@ -221,8 +223,9 @@ if (!user){
   console.log (' Usuario no registrado:  ');
 }
 
-const BookIndex = user.lendBooks.indexOf(BookId); // Investigue este arreglo .indexOf el cual funciona para encontrar la posicion del indice. 
-if (BookIndex === -1){
+// Investigue este arreglo .indexOf el cual funciona para encontrar la posicion del indice. 
+
+const BookIndex = user.lendBooks.indexOf(BookId);if (BookIndex === -1){
   console.log (' Este usuario no tiene prestado este libro ');
 return;
 }
@@ -285,7 +288,6 @@ function statisticsCalculation (){
       
     }  
       
-
     
   }
   let years = Books.map(book => book.year);
@@ -312,13 +314,9 @@ function statisticsCalculation (){
 }
 
 
-
-
-
-
-
  
 // bubble sort 
+// y aqui la famosa opcion y terrorifica, que es para que ordene los datos , 
 
 function  BubbleSort(){
   let swap = false;
@@ -448,7 +446,8 @@ switch (option){
           }
           break
           case "6":
-            console.log ('' );
+            console.log (' saliendo del programa' );
+            
             break
             }
             
@@ -462,7 +461,7 @@ switch (option){
     console.log("**** USUARIOA ****");
     console.log(" 1 Registrar usuario  ");
     console.log(" 2 Mostrar todos los usuarios ");
-    console.log(" 3 Buscar usuario ");
+    console.log(" 3 Buscar usuario ID ");
     console.log(" 4 Borrar Usuario ");
     console.log(" 5 Salir "); 
 
@@ -490,8 +489,8 @@ switch (option){
         PrintUsers (Users);
         break
         case "3":  
-        let searchUserId = parseInt(prompt(' Escribe el ID o E-mail de usuario que estas buscando:  '));
-        let FindedUser = SearchUserById(searchUserId) && SearchUserByEmail(searchUserEmail);
+        let searchUserId = parseInt(prompt(' Escribe el ID de usuario que estas buscando:  '));
+        let FindedUser = SearchUserById(searchUserId) 
         console.log (FindedUser);
         break
         case"4":
