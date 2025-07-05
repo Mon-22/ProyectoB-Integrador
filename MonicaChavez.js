@@ -86,12 +86,33 @@ let Users =  [
     lendBooks: [],
     activated: true},
   {UserId: 2,
-    UserName: 'Jupiter  ',
-    UserLastname: ' Toledo ',
-    UserAge: 25,   
-    UserMail: ' JUPITER@mailito.com',
+    UserName: 'Ash  ',
+    UserLastname: ' Ketchum ',
+    UserAge: 12,   
+    UserMail: ' Pikachu@mailito.com',
     lendBooks:[],
-    activated: true}  
+    activated: true},
+    {UserId: 3,
+    UserName: 'Jimi  ',
+    UserLastname: ' Hendrix ',
+    UserAge: 40,   
+    UserMail: ' Jimito@mailito.com',
+    lendBooks:[],
+    activated: true},  
+    {UserId: 4,
+    UserName: 'Hermione  ',
+    UserLastname: ' Granger ',
+    UserAge: 10,   
+    UserMail: ' Hermion@mailito.com',
+    lendBooks:[],
+    activated: true},  
+    {UserId: 5,
+    UserName: 'Lord  ',
+    UserLastname: ' Voldemort ',
+    UserAge: 25,   
+    UserMail: ' dontenebroso@mailito.com',
+    lendBooks:[],
+    activated: true}    
 ];
 
 
@@ -155,7 +176,8 @@ function PrintUsers (Users){
   const UserData=Users.map(user =>({
   Name : user.UserName.trim(),
   lastname:user.UserLastname.trim(),
-  mail:user.UserMail.trim()
+  mail:user.UserMail.trim(),
+  lend:user.LendBooks ? user.LendBooks.join(' , ') : ' Ninguno' //
   }));
   console.log (' Lista de usuarios: '); 
   console.table(UserData);
@@ -341,10 +363,11 @@ function  BubbleSort(){
     swap = false;
       
   }
+
+  console.log('\n*** Libros ordenados (BubbleSort) ***');
+  
+
 }
-
-
-
 
 // block of menu functions 
 // Main menu 
@@ -353,11 +376,11 @@ function CreateMainMenu () {
     console.log( ' **** MENU LA BIBLIOTECA DE MONICA ****');
     console.log(" 1 Libros");
     console.log(" 2 Usuarios");
-    console.log(" 3 Prestamos");
-    console.log(" 4 Reportes");
+    console.log(" 3 Prestamos y Devoluciones ");
+    console.log(" 4 Reportes Estadisticos ");
     console.log(" 5 Salir");
 
-    const option = prompt(' Selecciona una opcion:  ');
+    const option = prompt('\n Selecciona una opcion:  ');
     ClearConsole();
 switch (option){
     case"1":
@@ -390,7 +413,7 @@ switch (option){
     console.log(" 5 Borrar Libros");
     console.log(" 6 Salir");
       
-    const option = prompt(' Selecciona una opcion:  ');
+    const option = prompt('\n Selecciona una opcion:  ');
     ClearConsole();
     switch (option){
         case "1":
@@ -418,8 +441,8 @@ switch (option){
           console.log(DataNormalizeBook(FindedBook));
           break
           case "3": 
-          let SearchBookCriteria = prompt(' Por que quieres buscar, titulo, autor o genero: ');
-          let SearchCriteriaValue = prompt(' Introduce tu busqueda:  ');
+          let SearchBookCriteria = prompt('Por que quieres buscar: titulo, autor o genero: ');
+          let SearchCriteriaValue = prompt('Introduce tu busqueda:  ');
           console.log(SearchBookByCriteria(SearchBookCriteria,SearchCriteriaValue));
           break
           case "4":
@@ -465,7 +488,7 @@ switch (option){
     console.log(" 4 Borrar Usuario ");
     console.log(" 5 Salir "); 
 
-    const option = prompt (' Selecciona una opcion:  ');
+    const option = prompt ('\n Selecciona una opcion:  ');
     ClearConsole();
    
     switch (option) {
@@ -494,7 +517,7 @@ switch (option){
         console.log (FindedUser);
         break
         case"4":
-        let UserAnswer=prompt(' deseas eliminar un usuario? (si/no): ').toLowerCase(); 
+        let UserAnswer=prompt(' Deseas eliminar un usuario? (si/no): ').toLowerCase(); 
            if (UserAnswer==='si'){
              let DeleteUser=parseInt(prompt(' Escribe el ID del usuario que deseas eliminar: '));
             if (!isNaN(DeleteUser)){
@@ -518,7 +541,7 @@ switch (option){
     console.log('1 Prestar libro ');
     console.log('2 Devolver libro ');
     console.log('3 Reportes de prestamos');
-    const option = prompt (' Selecciona una opcion:  ');
+    const option = prompt ('\n Selecciona una opcion:  ');
     ClearConsole();
 
     switch (option){
@@ -540,7 +563,7 @@ switch (option){
     console.log("**** REPORTES ESTADISTICO ****");
     console.log('1 Reportes Estadisticos ');
     console.log('2 Salir');
-    const option = prompt (' Selecciona una opcion:  ');
+    const option = prompt ('\nSelecciona una opcion:  ');
     ClearConsole(); 
 
     switch (option){
